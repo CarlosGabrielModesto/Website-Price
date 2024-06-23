@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Preço de WebSite</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Cabeçalho -->
+    <header class="bg-primary text-white py-4">
+        <div class="container text-center">
+            <h1>Calculadora de Preço de WebSite</h1>
+        </div>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <div class="container-forms mt-5">
+        <form id="formularioTrabalho">
+            <div class="form-group">
+                <label for="horasPorDia">Quantas horas você trabalha por dia? (Geralmente 8)</label>
+                <input type="number" class="form-control" id="horasPorDia" name="horasPorDia" min="0" required>
+            </div>
+
+            <div class="form-group">
+                <label for="diasPorMes">Quantos dias você trabalha por mês? (Geralmente 20)</label>
+                <input type="number" class="form-control" id="diasPorMes" name="diasPorMes" min="0" required>
+            </div>
+
+            <div class="form-group">
+                <label for="custoMensal">Qual o seu custo de vida mensal?</label>
+                <input type="number" class="form-control" id="custoMensal" name="custoMensal" min="0" required>
+            </div>
+
+            <div class="form-group">
+                <label for="percentualAumento">Quantos por cento você quer ganhar a mais por hora trabalhada? (15% por
+                    exemplo)</label>
+                <input type="number" class="form-control" id="percentualAumento" name="percentualAumento" min="0"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="tempoProjeto">Quantas horas você estima que levará para desenvolver o projeto?</label>
+                <input type="number" class="form-control" id="tempoProjeto" name="tempoProjeto" min="0" required>
+            </div>
+
+            <div class="form-group">
+                <label for="clienteConteudo">O cliente fornecerá o conteúdo para o site?</label>
+                <select class="form-control" id="clienteConteudo" name="clienteConteudo" required>
+                    <option value="sim">Sim</option>
+                    <option value="nao">Não</option>
+                </select>
+            </div>
+
+            <div id="secaoElementos" style="display: none;">
+                <h3>Adicionar Elementos</h3>
+                <div class="form-group">
+                    <label for="nomeElemento">Nome do Elemento:</label>
+                    <input type="text" class="form-control" id="nomeElemento" name="nomeElemento">
+                </div>
+                <div class="form-group">
+                    <label for="precoElemento">Preço do Elemento:</label>
+                    <input type="number" class="form-control" id="precoElemento" name="precoElemento" min="0">
+                </div>
+                <button type="button" class="btn btn-primary mb-3" id="adicionarElemento">Adicionar Elemento</button>
+                <h4>Elementos Adicionados:</h4>
+                <ol id="listaElementos"></ol>
+            </div>
+
+            <div class="form-group">
+                <label for="tratamentoImagens">Você vai utilizar Photoshop ou Canva para tratamento de imagens?</label>
+                <select class="form-control" id="tratamentoImagens" name="tratamentoImagens" required>
+                    <option value="nao">Não</option>
+                    <option value="sim">Sim</option>
+                </select>
+            </div>
+
+            <div id="secaoImagens" style="display: none;">
+                <h3>Adicionar Imagens</h3>
+                <div class="form-group">
+                    <label for="quantidadeImagens">Quantidade de Imagens:</label>
+                    <input type="number" class="form-control" id="quantidadeImagens" name="quantidadeImagens" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="precoImagem">Preço por Imagem:</label>
+                    <input type="number" class="form-control" id="precoImagem" name="precoImagem" min="0">
+                </div>
+                <button type="button" class="btn btn-primary mb-3" id="adicionarImagem">Adicionar Imagem</button>
+                <h4>Imagens Adicionadas:</h4>
+                <ol id="listaImagens"></ol>
+            </div>
+
+            <div class="form-group">
+                <label for="terceirizacao">Você vai terceirizar algum serviço?</label>
+                <select class="form-control" id="terceirizacao" name="terceirizacao" required>
+                    <option value="nao">Não</option>
+                    <option value="sim">Sim</option>
+                </select>
+            </div>
+
+            <div id="secaoTerceirizacao" style="display: none;">
+                <h3>Adicionar Serviços Terceirizados</h3>
+                <div class="form-group">
+                    <label for="nomeServico">Nome do Serviço:</label>
+                    <input type="text" class="form-control" id="nomeServico" name="nomeServico">
+                </div>
+                <div class="form-group">
+                    <label for="precoServico">Preço do Serviço:</label>
+                    <input type="number" class="form-control" id="precoServico" name="precoServico" min="0">
+                </div>
+                <button type="button" class="btn btn-primary mb-3" id="adicionarServico">Adicionar Serviço</button>
+                <h4>Serviços Terceirizados Adicionados:</h4>
+                <ol id="listaServicos"></ol>
+            </div>
+
+            <div class="form-group">
+                <label for="usoSoftwarePago">Você utilizou algum software pago?</label>
+                <select class="form-control" id="usoSoftwarePago" name="usoSoftwarePago" required>
+                    <option value="nao">Não</option>
+                    <option value="sim">Sim</option>
+                </select>
+            </div>
+
+            <div id="secaoSoftwarePago" style="display: none;">
+                <h3>Adicionar Softwares Pagos</h3>
+                <div class="form-group">
+                    <label for="nomeSoftware">Nome do Software:</label>
+                    <input type="text" class="form-control" id="nomeSoftware" name="nomeSoftware">
+                </div>
+                <div class="form-group">
+                    <label for="precoSoftware">Preço do Software:</label>
+                    <input type="number" class="form-control" id="precoSoftware" name="precoSoftware" min="0">
+                </div>
+                <button type="button" class="btn btn-primary mb-3" id="adicionarSoftware">Adicionar Software</button>
+                <h4>Softwares Adicionados:</h4>
+                <ol id="listaSoftwares"></ol>
+            </div>
+
+            <div class="form-group">
+                <label for="tipoSite">Selecione o tipo de site:</label>
+                <select class="form-control" id="tipoSite" name="tipoSite" required>
+                    <option value="nenhum">Nenhum - R$ 0,00</option>
+                    <option value="one-page">One Page / Landing Page / HotSite - R$ 1450,00 (Valor inicial)</option>
+                    <option value="institucional">Institucional - R$ 1500,00 (Valor inicial)</option>
+                    <option value="blog">Blog / Portal de Notícia - R$ 2000,00 (Valor inicial)</option>
+                    <option value="loja-virtual">Loja Virtual / Ecommerce - R$ 2500,00 (Valor inicial)</option>
+                    <option value="portais">Sites Portais (Imobiliária, loja de carros, hotel, etc...) - R$ 4000,00
+                        (Valor
+                        inicial)</option>
+                </select>
+            </div>
+
+            <div id="secaoQuantidadePaginas" style="display: none;">
+                <div class="form-group">
+                    <label for="quantidadePaginas">Quantidade de Páginas:</label>
+                    <input type="number" class="form-control" id="quantidadePaginas" name="quantidadePaginas" min="1"
+                        value="1">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="usoCMS">Você vai utilizar algum CMS (ex: WordPress)?</label>
+                <select class="form-control" id="usoCMS" name="usoCMS" required>
+                    <option value="nao">Não</option>
+                    <option value="sim">Sim</option>
+                </select>
+            </div>
+
+            <div id="secaoPlugins" style="display: none;">
+                <h3>Adicionar Plugins</h3>
+                <div class="form-group">
+                    <label for="nomePlugin">Nome do Plugin:</label>
+                    <input type="text" class="form-control" id="nomePlugin" name="nomePlugin">
+                </div>
+                <div class="form-group">
+                    <label for="precoPlugin">Preço do Plugin:</label>
+                    <input type="number" class="form-control" id="precoPlugin" name="precoPlugin" min="0">
+                </div>
+                <button type="button" class="btn btn-primary mb-3" id="adicionarPlugin">Adicionar Plugin</button>
+                <h4>Plugins Adicionados:</h4>
+                <ol id="listaPlugins"></ol>
+            </div>
+
+            <div class="form-group">
+                <label for="desconto">Porcentagem de Desconto (Desconte 20% no mínimo para WordPress):</label>
+                <input type="number" class="form-control" id="desconto" name="desconto" min="0" max="100" value="0">
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block mt-4">Calcular</button>
+            <button type="button" class="btn btn-warning btn-block mt-2" id="reiniciar">Reiniciar</button>
+
+
+        </form>
+
+        <!-- Resultado e Valor Final -->
+        <div class="mt-3">
+            <div id="resultado" class="alert" role="alert"></div>
+            <div id="valorFinal" class="alert" role="alert" style="display: none;"></div>
+        </div>
+    </div>
+
+    <br><br><br>
+
+    <!-- Rodapé -->
+    <footer class="bg-dark text-white py-3">
+        <div class="container text-center">
+            <p>&copy; 2024 Calculadora de Preço de WebSite. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS e jQuery (opcional, se necessário para funcionalidades adicionais) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Seu arquivo de script personalizado -->
+    <script src="script.js"></script>
+</body>
+
+</html>

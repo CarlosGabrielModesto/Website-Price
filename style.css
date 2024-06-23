@@ -1,0 +1,85 @@
+body {
+    background: linear-gradient(to bottom right, #f8f9fa, #ced4da);
+}
+
+.container-forms {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    max-width: 600px; /* Reduz a largura máxima do formulário */
+    margin: 0 auto; /* Centraliza o formulário horizontalmente */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.resultadoDestacado {
+    background-color: #f8d7da;
+    /* Cor de fundo destacada (vermelho suave) */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Aumentar tamanho de títulos e subtítulos */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 2.5rem;
+}
+
+/* Aumentar tamanho de textos normais */
+p,
+label,
+input[type="number"],
+select,
+.btn {
+    font-size: 1.1rem;
+}
+
+/* Melhorar visual do formulário */
+.form-group {
+    margin-bottom: 2rem;
+    /* Espaçamento entre grupos de formulário */
+}
+
+/* Estilizar o botão de calcular */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* Estilizar o botão de reiniciar */
+.btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+    border-color: #e0a800;
+}
+
+/* Estilizar os alerts de resultado */
+#resultado,
+#valorFinal {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+@media (max-width: 576px) {
+    /* Estilo para telas menores que 576px (Mobile) */
+    .container-forms {
+        margin: 10px; /* Adiciona uma margem fina nas laterais */
+    }
+}
